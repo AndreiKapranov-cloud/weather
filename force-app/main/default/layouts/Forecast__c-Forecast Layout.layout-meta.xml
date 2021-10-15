@@ -19,10 +19,6 @@
                 <field>Time__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>City__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Temperature__c</field>
             </layoutItems>
@@ -30,8 +26,17 @@
                 <behavior>Edit</behavior>
                 <field>Weather_message__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>City__c</field>
+            </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
+            </layoutItems>
+        </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
