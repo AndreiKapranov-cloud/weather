@@ -12,11 +12,6 @@
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
-        <field>City__c.Country__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Forecast__c.City__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -41,20 +36,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
-        <layout>City__c-City Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Forecast__c-Forecast Layout</layout>
     </layoutAssignments>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>City__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
