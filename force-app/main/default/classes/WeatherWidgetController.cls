@@ -53,7 +53,7 @@ public with sharing class WeatherWidgetController {
     //            cityFromForecast.Country__c = countryName;
     //upsert cityFromForecast;
               //  configRec.name = 'Beach2';
-              configRec.Name = 'fuck';
+              configRec.Name = 'duck';
               configRec.City__c = cityFromJson;//cityName;//cityName + ', ' + countryName;
               configRec.Temperature__c = temperature;
               configRec.Weather_message__c = weatherDesc;
