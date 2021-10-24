@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
         <application>Weather_Application</application>
@@ -6,13 +6,17 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>WeatherWidgetController</apexClass>
+        <apexClass>GetData</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>WeatherController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Forecast__c.City__c</field>
+        <field>City__c.Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -35,6 +39,9 @@
         <field>Forecast__c.Weather_message__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <layoutAssignments>
+        <layout>City__c-City Layout</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>Forecast__c-Forecast Layout</layout>
     </layoutAssignments>

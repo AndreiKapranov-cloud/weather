@@ -152,14 +152,14 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Forecast</label>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>City</label>
     <nameField>
-        <label>Forecast Name</label>
+        <label>City Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Forecasts</pluralLabel>
+    <pluralLabel>Cities</pluralLabel>
     <searchLayouts />
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

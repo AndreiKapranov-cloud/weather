@@ -1,120 +1,79 @@
 <template>
-    <lightning-card title="Weather">
+  <lightning-card title="Weather">
     <div class="slds-var-p-horizontal_small">
-        <template if:true={isFormEnabled}>
-            <div class="slds-grid slds-gutters slds-wrap">
-                <div class="slds-col slds-size_1-of-1">
-                    <lightning-input type="text" name="inputCity" label="Enter City" placeholder="London, UK"
-                        onchange={updateValue} value={displayCity}>
-                    </lightning-input>
-                </div>
-            </div>
-           
-                <lightning-button variant="brand" label="Save" title="Save" onclick={handleFormSave}>
-                </lightning-button>
-            </template>
+      <template if:true={isFormEnabled}>
+        <div class="slds-grid slds-gutters slds-wrap">
+          <div class="slds-col slds-size_1-of-1">
+            <lightning-input
+              type="text"
+              name="inputCity"
+              label="Enter City"
+              placeholder="London, UK"
+              onchange={updateValue}
+              value={displayCity}
+            >
+            </lightning-input>
+          </div>
+        </div>
+
+        <lightning-button
+          variant="brand"
+          label="Save"
+          title="Save"
+          onclick={handleFormSave}
+        >
+        </lightning-button>
+      </template>
     </div>
-</lightning-card>
-	<lightning-card  >
-       
-    
-		<div class="slds-card__body_inner">
-			<!-- Start bear list -->
-			<template if:true={objList}>
-				<lightning-layout multiple-rows="true" pull-to-boundary="small">
-					<template for:each={objList} for:item="bear">
-						<lightning-layout-item key={bear.Id} >
-							<!-- Start bear tile -->
-							<lightning-card >
-								<div class="slds-var-p-horizontal_small bear-tile-body">
-									<div class="slds-media">
-										
-										<div class="slds-media__body">
-                                            
-											<p class="slds-var-m-bottom_xx-small">{bear.City__c}</p>
-											<p class="slds-var-m-bottom_xx-small">{bear.Temperature__c} </p>
-											<p class="slds-var-m-bottom_xx-small">{bear.Weather_message__c} </p>
-											<p class="slds-var-m-bottom_xx-small">{bear.Date__c} </p>
-                                            <p class="slds-var-m-bottom_xx-small">{bear.Time__c} </p>
-										</div>
-									</div>
-								</div>
-							</lightning-card>
-							<!-- End bear tile -->
-						</lightning-layout-item>
-					</template>
-				</lightning-layout>
-			</template>
-			<!-- End bear list -->
-			<!-- Data failed to load -->
-			<template if:true={error}>
-				<div class="slds-text-color_error">
-					An error occurred while loading the bear list
-				</div>
-			</template>
-		</div>
-	
+  </lightning-card>
+  <lightning-card>
+    <div class="slds-card__body_inner">
+      <!-- Start bear list -->
+      <template if:true={objList}>
+        <lightning-layout multiple-rows="true" pull-to-boundary="small">
+          <template for:each={objList} for:item="bear">
+            <lightning-layout-item key={bear.Id}>
+              <!-- Start bear tile -->
+              <lightning-card>
+                <div class="slds-var-p-horizontal_small bear-tile-body">
+                  <div class="slds-media">
+                    <div class="slds-media__body">
+                      <p class="slds-var-m-bottom_xx-small">{bear.Id}</p>
+                      <p class="slds-var-m-bottom_xx-small">{bear.Name}</p>
+                      <p class="slds-var-m-bottom_xx-small">
+                        {bear.Weather_message}
+                      </p>
+                      <p class="slds-var-m-bottom_xx-small">
+                        {bear.Temperature__c} 'C
+                      </p>
+                      <p class="slds-var-m-bottom_xx-small">
+                        {bear.Weather_message__c}
+                      </p>
+                      <p class="slds-var-m-bottom_xx-small">{bear.Time__c}</p>
+                      <p class="slds-var-m-bottom_xx-small">{bear.Date__c}</p>
+                    </div>
+                  </div>
+                </div>
+              </lightning-card>
+              <!-- End bear tile -->
+            </lightning-layout-item>
+          </template>
+        </lightning-layout>
+      </template>
+      <!-- End bear list -->
+      <!-- Data failed to load -->
+      <template if:true={error}>
+        <div class="slds-text-color_error">
+          An error occurred while loading the bear list
+        </div>
+      </template>
+    </div>
+
     <template if:true={error}>
-        Error fetching weather information : {error.body.message}
+      Error fetching weather information : {error.body.message}
     </template>
-</lightning-card>
-
+  </lightning-card>
 </template>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--<template>
     <lightning-card title="Weather">
@@ -132,17 +91,16 @@
                         </lightning-input>
                     </div>
                -->
-                   
-                    <!--  <div class="slds-col slds-size_1-of-1">
+
+<!--  <div class="slds-col slds-size_1-of-1">
                         <lightning-input type="password" name="inputApiKey" label="Enter API Key"
                         placeholder="Leave blank to use existing key"
                         field-level-help="Grab one from: https://openweathermap.org/api"
                         onchange={updateValue} value={apiKey}>
                         </lightning-input>
                     </div>-->
- 
-      
-                  <!--  <div class="slds-col slds-size_1-of-1 slds-var-m-top_x-small">
+
+<!--  <div class="slds-col slds-size_1-of-1 slds-var-m-top_x-small">
                         <lightning-button variant="brand" label="Save" title="Save" onclick={handleFormSave}>
                         </lightning-button>
                         <lightning-button label="Cancel" title="Cancel" onclick={handleCancel}
@@ -151,10 +109,8 @@
                     </div>
                 </div>
             </template>-->
-            
-                
-                
-           <!--
+
+<!--
             <template if:false={isFormEnabled}>
                 <div class="slds-grid slds-gutters">
                     <div class="slds-grid slds-col slds-size_2-of-3 slds-wrap">
@@ -166,18 +122,17 @@
                         <div class="slds-col slds-size_1-of-2">{weatherDescription}</div>
                     -->
 
-                        <!--    <div class="slds-col slds-size_1-of-3">
+<!--    <div class="slds-col slds-size_1-of-3">
                         <img src={weatherIcon}>
                     </div>-->
 
-              <!--  </div>
+<!--  </div>
                     </div>
             </template>
         </div>
 -->
-       
 
-        <!-- <div slot="footer">
+<!-- <div slot="footer">
             <template if:false={error}>
                 Last synced on :
                 <lightning-formatted-date-time value={timestamp}
@@ -189,8 +144,8 @@
                 second="2-digit">
                 </lightning-formatted-date-time>
             </template>-->
-    
-           <!-- <template if:true={error}>
+
+<!-- <template if:true={error}>
             Error fetching weather information : {error.body.message}
         </template>
     </lightning-card>
