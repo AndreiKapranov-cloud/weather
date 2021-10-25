@@ -7,20 +7,23 @@ public with sharing class WeatherController {
       Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(
         responseBody
       );
-
+      Circle circle = new Circle();
+      List<Forecast__c> objList = circle.createCircle(responseMap);
+      /*   CityChild cityChild = new CityChild();
       List<Forecast__c> objList = new List<Forecast__c>();
-
-      City__c cityChild = new City__c();
-      Map<String, Object> cityMap = (Map<String, Object>) responseMap.get(
+      City__c cityObj = cityChild.getChild(responseBody);
+     /* City__c cityChild = new City__c();
+      Map<String,Object> cityMap = (Map<String, Object>) responseMap.get(
         'city'
       );
       String cityFromJson = String.valueOf(cityMap.get('name'));
       String countryFromJson = String.valueOf(cityMap.get('country'));
       cityChild.Country__c = countryFromJson;
       cityChild.Name = cityFromJson;
-      upsert cityChild;
+      upsert cityChild;*/
 
-      for (Integer i = 0; i < 40; i++) {
+      /* for (Integer i = 0; i < 40; i++) {
+       
         Forecast__c forecast = new Forecast__c();
 
         List<Object> ListGlobal = (List<Object>) responseMap.get('list');
@@ -74,7 +77,7 @@ public with sharing class WeatherController {
 
         objList.add(forecast);
       }
-      // objList=[select Id from Forecast__c ];
+      // objList=[select Id from Forecast__c ];*/
       upsert objList;
       List<Forecast__c> sel = [
         SELECT
@@ -88,6 +91,9 @@ public with sharing class WeatherController {
         WHERE Id IN :objList
       ];
       return sel;
+
+      UpsertAndSelect upsertAndSelect = new UpsertAndSelect();
+      return upsertAndSelect.gettingWeatherMessageFromSetting(objList);
       // delete[SELECT id FROM Forecast__c];
       //  objList = [SELECT id,Temperature__c,Name,Weather_message__c,Date__c,Time__c FROM Forecast__c];
       //  return objList;

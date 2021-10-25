@@ -16,18 +16,22 @@ jest.mock(
 // Sample data for imperative Apex call
 const APEX_CONTACTS_SUCCESS = [
   {
-    Id: "a01N000000N0EsoIAF",
-    Name: "London 2021-10-23 12:00:00",
-    City__c: "a05N000000BGZBMIA5",
-    Temperature__c: 37,
-    Weather_message__c: "goodi"
+    City__c: "a05N000000BGZIAIA5",
+    Date__c: "2021-10-24T21:00:00.000Z",
+    Id: "a01N000000N0F2eIAF",
+    Name: "London",
+    Temperature__c: 13.19,
+    Time__c: 75600000,
+    Weather_message__c: "Work."
   },
   {
-    Id: "a01N000000N0EsqIAF",
-    Name: "London 2021-10-23 15:00:00",
-    City__c: "a05N000000BGZBMIA5",
-    Temperature__c: 37,
-    Weather_message__c: "goodi"
+    City__c: "a05N000000BGZIAIA5",
+    Date__c: "2021-10-25T00:00:00.000Z",
+    Id: "a01N000000N0F2fIAF",
+    Name: "London",
+    Temperature__c: 12.45,
+    Time__c: 0,
+    Weather_message__c: "Work."
   }
 ];
 // Sample error for imperative Apex call
@@ -71,12 +75,10 @@ describe("c-weather", () => {
     // Wait for any asynchronous DOM updates
     await flushPromises();
 
-    const detailEls = element.shadowRoot.querySelectorAll(
-      "slds-var-m-bottom_xx-small"
-    );
+    const detailEls = element.shadowRoot.querySelectorAll("p");
     //  expect(detailEls.length).toBe(160);
     expect(detailEls[0].textContent).toBe(APEX_CONTACTS_SUCCESS[0].Id);
-    expect(detailEls[1].textContent).toBe(APEX_CONTACTS_SUCCESS[0].City__c);
+    expect(detailEls[1].textContent).toBe(APEX_CONTACTS_SUCCESS[0].Name);
   });
 
   it("renders the error panel when the Apex method returns an error", async () => {
@@ -97,7 +99,7 @@ describe("c-weather", () => {
     await flushPromises();
 
     const errorPanelEl = element.shadowRoot.querySelector(
-      "slds-text-color_error"
+      "div.slds-text-color_error"
     );
     expect(errorPanelEl).not.toBeNull();
   });
@@ -123,7 +125,7 @@ describe("c-weather", () => {
 
   it("is accessible when error is returned", async () => {
     // Assign mock value for rejected Apex promise
-    weather.mockRejectedValue(APEX_CONTACTS_ERROR);
+    refreshWeather.mockRejectedValue(APEX_CONTACTS_ERROR);
 
     // Create initial element
     const element = createElement("c-apex-imperative-method", {

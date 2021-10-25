@@ -13,11 +13,17 @@ public class TestDataFactory {
       Forecast__c a = new Forecast__c(
         Name = name + i,
         City__c = city.Id,
+        Weather_Message__c = 'foo',
         Temperature__c = temperature
       );
       forecasts.add(a);
     }
     insert forecasts;
+    forecasts = [
+      SELECT Name, City__c, Weather_Message__c, Temperature__c
+      FROM Forecast__c
+      WHERE Id IN :forecasts
+    ];
     return forecasts;
   }
 }

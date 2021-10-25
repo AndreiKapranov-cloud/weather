@@ -2,6 +2,7 @@
 public class TestDelForecast {
   @isTest
   static void TestDeleteForecastsWithEqualNames() {
+    Weather_Setting__c setting = Weather_Setting__c.getInstance();
     City__c city = new City__c();
     insert city;
     List<Forecast__c> forecastsFirst = TestDataFactory.createForecasts(
